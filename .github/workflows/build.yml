@@ -18,5 +18,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_SCANNER_OPTS: "-Dsonar.projectKey=abelguevaralanda_technical-test-next -Dsonar.organization=abelito86 -Dsonar.sources=./app"
 
 
