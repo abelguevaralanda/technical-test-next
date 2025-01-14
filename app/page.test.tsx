@@ -7,7 +7,7 @@ describe('Given a page component', () => {
     it('should render a text', () => {
       const { getByText } = render(<Home />)
 
-      expect(getByText(/Get started by editing/)).toBeInTheDocument()
+      expect(getByText(/Hola/)).toBeInTheDocument()
     })
   })
 })
