@@ -18,6 +18,7 @@ describe('LoginForm', () => {
   })
 
   it('disables the login button when the form is pending', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     (authenticate as jest.Mock).mockImplementation(() => new Promise(() => {}))
     render(<LoginForm />)
     const emailInput = screen.getByLabelText('Email')

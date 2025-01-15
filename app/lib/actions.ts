@@ -14,12 +14,11 @@ export async function authenticate(
     console.log(error)
 
     if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return 'Invalid credentials.'
-        default:
-          return 'Something went wrong.'
+      const errorMessages: Record<string, string> = {
+        CredentialsSignin: 'Invalid credentials.',
       }
+
+      return errorMessages[error.type] || 'Something went wrong.'
     }
     throw error
   }
