@@ -11,8 +11,6 @@ export async function authenticate(
     await signIn('credentials', formData)
   }
   catch (error) {
-    console.log(error)
-
     if (error instanceof AuthError) {
       const errorMessages: Record<string, string> = {
         CredentialsSignin: 'Invalid credentials.',
