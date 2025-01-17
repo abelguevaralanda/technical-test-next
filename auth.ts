@@ -7,7 +7,7 @@ import Credentials from 'next-auth/providers/credentials'
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
-    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/users`) // Llama a la API interna
+    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/users`)
     if (!response.ok) throw new Error('Failed to fetch users')
 
     const users = (await response.json()) as User[]

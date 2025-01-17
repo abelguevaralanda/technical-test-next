@@ -23,7 +23,10 @@ export default function LoginForm() {
   )
 
   return (
-    <form action={formAction} className="space-y-3">
+    <form
+      action={formAction}
+      className="space-y-3"
+    >
       <div className="flex-1 rounded-lg shadow-2xl bg-gray-50 px-6 pb-4 pt-8">
         <h1 className={`${abel.className} mb-3 text-2xl`}>
           {LOGIN_TITLE_TEXT}
