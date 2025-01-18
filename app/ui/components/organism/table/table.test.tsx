@@ -50,4 +50,11 @@ describe('Given a Table component', () => {
       expect(screen.queryByText('Jane Doe')).not.toBeInTheDocument()
     })
   })
+
+  describe('When receives invalid data', () => {
+    it('Should render "No data available"', () => {
+      render(<Table columns={columns} data={null as unknown as Data[]} title="Test Table" />)
+      expect(screen.getByText('No data available')).toBeInTheDocument()
+    })
+  })
 })
