@@ -17,14 +17,14 @@ export default function Home() {
             width={1000}
             height={760}
             className="hidden md:block rounded-lg shadow-2xl hover:opacity-80"
-            alt="Screenshots of the dashboard project showing desktop version"
+            alt="Movies desktop version"
           />
           <Image
             src="/movie-mobile.webp"
             width={560}
             height={620}
             className="block md:hidden rounded-lg shadow-2xl hover:opacity-80"
-            alt="Screenshot of the dashboard project showing mobile version"
+            alt="Movies mobile version"
           />
         </div>
         <div
