@@ -1,5 +1,6 @@
 import NavLinks from '@/app/ui/components/molecules/nav-links/nav-links'
 import { signOut } from '@/auth'
+import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
 import { FaPowerOff } from 'react-icons/fa'
@@ -8,11 +9,17 @@ const SIGN_OUT_TEXT = 'Sign Out'
 
 export default function SideNav() {
   return (
-    <div className="flex h-full flex-col px-3 py-4 md:px-2">
+    <aside className="flex h-full flex-col px-3 py-4 md:px-2">
       <Link
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
         href="/"
       >
+        <Image
+          src="/your-movies-app.webp"
+          alt="Your movies app logo"
+          className="mb-2 flex h-20 items-end justify-start rounded-md shadow-2xl hover:opacity-80"
+          width={160}
+          height={80}
+        />
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
@@ -29,6 +36,6 @@ export default function SideNav() {
           </button>
         </form>
       </div>
-    </div>
+    </aside>
   )
 }

@@ -1,4 +1,4 @@
-import type { User } from '@/app/lib/definitions'
+import type { User } from '@/app/lib/models/users'
 import NextAuth from 'next-auth'
 import { authConfig } from './auth.config'
 import { z } from 'zod'
