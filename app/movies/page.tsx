@@ -36,8 +36,12 @@ const COLUMNS: Column<Movie>[] = [
   },
 ]
 
-export default async function MoviesPage({ searchParams }: { searchParams: { page?: string } }) {
-  const page = parseInt(searchParams.page || '1', 10)
+export default async function MoviesPage({ searchParams }: Readonly<{
+  searchParams: Promise<{
+    page?: string
+  }>
+}>) {
+  const page = parseInt((await searchParams).page || '1', 10)
   const movies = await getMovies(page)
   const rowsData = movies.results
 
