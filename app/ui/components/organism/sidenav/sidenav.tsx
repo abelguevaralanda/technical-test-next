@@ -14,11 +14,11 @@ export default function SideNav() {
         href="/"
       >
         <Image
-          src="/your-movies-app.webp"
+          src="/logo.png"
           alt="Your movies app logo"
-          className="mb-2 flex h-20 items-end justify-start rounded-md shadow-2xl hover:opacity-80"
-          width={160}
-          height={80}
+          className="mb-2 flex h-  items-end justify-start rounded-md shadow-2xl hover:opacity-80"
+          width={300}
+          height={50}
         />
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
