@@ -14,11 +14,7 @@ interface TableProps<T> {
   title: string
 }
 
-export default function Table<T extends { id: string | number }>({ columns, data, title }: TableProps<T>) {
-  if (!Array.isArray(data)) {
-    return <p>No data available</p>
-  }
-
+export default function Table<T extends { id: string | number }>({ columns, data, title }: Readonly<TableProps<T>>) {
   return (
     <section className="w-full">
       <h1 className={`${abel.className} mb-8 text-xl md:text-2xl`}>

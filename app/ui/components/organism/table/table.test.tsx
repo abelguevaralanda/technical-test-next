@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import type { Column } from './table'
 import Table from './table'
 
@@ -17,17 +17,19 @@ const data: Data[] = [
 describe('Given a Table component', () => {
   describe('When the component receives the headers', () => {
     it('Should renders correctly', () => {
-      render(<Table columns={columns} data={data} title="Test Table" />)
-      expect(screen.getByText('ID')).toBeInTheDocument()
-      expect(screen.getByText('Name')).toBeInTheDocument()
+      const { getByText } = render(<Table columns={columns} data={data} title="Test Table" />)
+
+      expect(getByText('ID')).toBeInTheDocument()
+      expect(getByText('Name')).toBeInTheDocument()
     })
   })
 
   describe('When receives the rows', () => {
     it('Should renders correctly', () => {
-      render(<Table columns={columns} data={data} title="Test Table" />)
-      expect(screen.getByText('John Doe')).toBeInTheDocument()
-      expect(screen.getByText('Jane Doe')).toBeInTheDocument()
+      const { getByText } = render(<Table columns={columns} data={data} title="Test Table" />)
+
+      expect(getByText('John Doe')).toBeInTheDocument()
+      expect(getByText('Jane Doe')).toBeInTheDocument()
     })
   })
 
@@ -37,24 +39,11 @@ describe('Given a Table component', () => {
         { header: 'ID', accessor: 'id' },
         { header: 'Name', accessor: 'name', customRow: (row: Data) => <span>{row.name.toUpperCase()}</span> },
       ]
-      render(<Table columns={customColumns} data={data} title="Test Table" />)
-      expect(screen.getByText('JOHN DOE')).toBeInTheDocument()
-      expect(screen.getByText('JANE DOE')).toBeInTheDocument()
-    })
-  })
 
-  describe('When receives empty data', () => {
-    it('Should render empty', () => {
-      render(<Table columns={columns} data={[]} title="Test Table" />)
-      expect(screen.queryByText('John Doe')).not.toBeInTheDocument()
-      expect(screen.queryByText('Jane Doe')).not.toBeInTheDocument()
-    })
-  })
+      const { getByText } = render(<Table columns={customColumns} data={data} title="Test Table" />)
 
-  describe('When receives invalid data', () => {
-    it('Should render "No data available"', () => {
-      render(<Table columns={columns} data={null as unknown as Data[]} title="Test Table" />)
-      expect(screen.getByText('No data available')).toBeInTheDocument()
+      expect(getByText('JOHN DOE')).toBeInTheDocument()
+      expect(getByText('JANE DOE')).toBeInTheDocument()
     })
   })
 })

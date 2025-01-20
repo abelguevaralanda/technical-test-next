@@ -11,6 +11,7 @@ describe('Given a getTrendingMoviesToDashboard function', () => {
   describe('When fetch is successful', () => {
     it('Should returns movies data', async () => {
       const mockMovies = { results: [{ id: 1, title: 'Movie 1' }] }
+
       fetchMock.mockResponseOnce(JSON.stringify(mockMovies))
 
       const result = await getTrendingMoviesToDashboard()
