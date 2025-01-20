@@ -3,6 +3,7 @@ import type { Movie } from '@/app/lib/models/movies'
 import { getImage, getMovies } from '@/app/lib/services/movies/movies'
 import TagStatus from '@/app/ui/components/atoms/tag/tag'
 import Pagination from '@/app/ui/components/organism/pagination/pagination'
+import Search from '@/app/ui/components/organism/search/search'
 import { TableSkeleton } from '@/app/ui/components/organism/table/components/skeleton'
 import type { Column } from '@/app/ui/components/organism/table/table'
 import Table from '@/app/ui/components/organism/table/table'
@@ -37,18 +38,22 @@ const COLUMNS: Column<Movie>[] = [
   },
 ]
 
-export default async function MoviesPage({ searchParams }: Readonly<{
+export default async function MoviesPage(props: Readonly<{
   searchParams: Promise<{
+    query?: string
     page?: string
   }>
 }>) {
-  const page = parseInt((await searchParams).page || '1', 10)
-  const movies = await getMovies(page)
+  const searchParams = await props.searchParams
+  const query = searchParams.query ?? ''
+  const page = parseInt((searchParams).page ?? '1', 10)
+  const movies = await getMovies(page, query)
   const rowsData = movies.results
 
   return (
     <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
-      <Suspense fallback={<TableSkeleton />}>
+      <Search />
+      <Suspense key={query + page} fallback={<TableSkeleton />}>
         <Table data={rowsData} columns={COLUMNS} title={MOVIES_TABLE_HEADERS_TEXTS.TITLE_TEXT} />
       </Suspense>
       <Pagination currentPage={page} totalPages={TOTAL_PAGES} />

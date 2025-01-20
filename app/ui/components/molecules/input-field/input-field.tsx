@@ -1,13 +1,14 @@
+import type { InputHTMLAttributes } from 'react'
 import React from 'react'
 
-interface InputFieldProps {
+interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   inputType: string
   placeholder: string
-  label: string
+  label?: string
   icon?: React.ReactNode
 }
 
-export default function InputField({ inputType, placeholder, label, icon }: InputFieldProps) {
+export default function InputField({ inputType, placeholder, label, icon, ...rest }: Readonly<InputFieldProps>) {
   return (
     <div className="w-full">
       <div>
@@ -24,6 +25,7 @@ export default function InputField({ inputType, placeholder, label, icon }: Inpu
             type={inputType}
             name={inputType}
             placeholder={placeholder}
+            {...rest}
           />
           {icon}
         </div>
