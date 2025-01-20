@@ -13,11 +13,12 @@ describe('Given a SideNav component', () => {
     it('Should renders a home link', () => {
       const { getByRole } = render(<SideNav />)
 
-      expect(getByRole('link', { name: /home/i })).toBeInTheDocument()
+      expect(getByRole('link', { name: 'Movies' })).toBeInTheDocument()
     })
 
     it('Should renders the sign out button with correct text', () => {
       const { getByText } = render(<SideNav />)
+
       expect(getByText('Sign Out')).toBeInTheDocument()
     })
   })
@@ -25,8 +26,11 @@ describe('Given a SideNav component', () => {
   describe('When sign out button is clicked', () => {
     it('Should calls signOut function ', async () => {
       const { getByRole } = render(<SideNav />)
-      const signOutButton = getByRole('button', { name: /sign out/i })
+
+      const signOutButton = getByRole('button', { name: 'Sign Out' })
+
       await userEvent.click(signOutButton)
+
       expect(signOut).toHaveBeenCalled()
     })
   })

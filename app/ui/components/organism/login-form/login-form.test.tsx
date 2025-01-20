@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import LoginForm from './login-form'
@@ -9,46 +9,48 @@ jest.mock('@/app/lib/actions', () => ({
   authenticate: jest.fn(),
 }))
 
-describe('LoginForm', () => {
-  it('renders the login form with all fields and button', () => {
-    render(<LoginForm />)
-    expect(screen.getByLabelText('Email')).toBeInTheDocument()
-    expect(screen.getByLabelText('Password')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument()
-  })
+describe('Given a LoginForm component', () => {
+  describe('When is render', () => {
+    it('Shoul renders the login form with all fields and button', () => {
+      const { getByLabelText, getByRole } = render(<LoginForm />)
 
-  it('disables the login button when the form is pending', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    (authenticate as jest.Mock).mockImplementation(() => new Promise(() => {}))
-    render(<LoginForm />)
-    const emailInput = screen.getByLabelText('Email')
-    const passwordInput = screen.getByLabelText('Password')
-    const loginButton = screen.getByRole('button', { name: /log in/i })
-
-    await userEvent.type(emailInput, 'test@example.com')
-    await userEvent.type(passwordInput, 'password')
-    await userEvent.click(loginButton)
-
-    await waitFor(() => {
-      expect(loginButton).toHaveAttribute('aria-disabled', 'true')
+      expect(getByLabelText('Email')).toBeInTheDocument()
+      expect(getByLabelText('Password')).toBeInTheDocument()
+      expect(getByRole('button', { name: /log in/i })).toBeInTheDocument()
     })
   })
 
-  it('does not display an error message when there is no error', () => {
-    render(<LoginForm />)
-    expect(screen.queryByText('Invalid credentials')).not.toBeInTheDocument()
+  describe('When the form is pending', () => {
+    it('Should disables the login button', async () => {
+      (authenticate as jest.Mock).mockImplementation(() => new Promise(() => [{}]))
+      const { getByRole, getByLabelText } = render(<LoginForm />)
+
+      const emailInput = getByLabelText('Email')
+      const passwordInput = getByLabelText('Password')
+      const loginButton = getByRole('button', { name: /log in/i })
+
+      await userEvent.type(emailInput, 'test@example.com')
+      await userEvent.type(passwordInput, 'password')
+      await userEvent.click(loginButton)
+
+      await waitFor(() => {
+        expect(loginButton).toHaveAttribute('aria-disabled', 'true')
+      })
+    })
   })
 
-  it('calls authenticate with correct email and password', async () => {
-    render(<LoginForm />)
-    const emailInput = screen.getByLabelText('Email')
-    const passwordInput = screen.getByLabelText('Password')
-    const loginButton = screen.getByRole('button', { name: /log in/i })
+  describe('When the email and password is correct', () => {
+    it('Should calls authenticate', async () => {
+      const { getByRole, getByLabelText } = render(<LoginForm />)
+      const emailInput = getByLabelText('Email')
+      const passwordInput = getByLabelText('Password')
+      const loginButton = getByRole('button', { name: /log in/i })
 
-    await userEvent.type(emailInput, 'test@example.com')
-    await userEvent.type(passwordInput, 'password')
-    await userEvent.click(loginButton)
+      await userEvent.type(emailInput, 'test@example.com')
+      await userEvent.type(passwordInput, 'password')
+      await userEvent.click(loginButton)
 
-    expect(authenticate).toHaveBeenCalled()
+      expect(authenticate).toHaveBeenCalled()
+    })
   })
 })

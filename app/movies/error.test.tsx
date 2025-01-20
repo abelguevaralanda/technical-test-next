@@ -1,5 +1,6 @@
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import MoviesError from './error'
 
 describe('Given a MoviesError Component', () => {
@@ -12,16 +13,16 @@ describe('Given a MoviesError Component', () => {
 
   describe('When the Movies page have an error', () => {
     it('Should renders error message', () => {
-      render(<MoviesError error={mockError} reset={mockReset} />)
+      const { getByText } = render(<MoviesError error={mockError} reset={mockReset} />)
 
-      expect(screen.getByText('Something went wrong!')).toBeInTheDocument()
-      expect(screen.getByText('Failed to Delete Invoice')).toBeInTheDocument()
+      expect(getByText('Something went wrong!')).toBeInTheDocument()
+      expect(getByText('Failed to Delete Invoice')).toBeInTheDocument()
     })
 
-    it('Should calls reset function on button click', () => {
-      render(<MoviesError error={mockError} reset={mockReset} />)
+    it('Should calls reset function on button click', async () => {
+      const { getByText } = render(<MoviesError error={mockError} reset={mockReset} />)
 
-      fireEvent.click(screen.getByText('Try again'))
+      await userEvent.click(getByText('Try again'))
 
       expect(mockReset).toHaveBeenCalledTimes(1)
     })
