@@ -14,7 +14,7 @@ interface TableProps<T> {
   title: string
 }
 
-export default function Table<T extends { id: string | number }>({ columns, data, title }: Readonly<TableProps<T>>) {
+export default function Table<T extends { id: string | number }>({ columns, data = [], title }: Readonly<TableProps<T>>) {
   return (
     <section className="w-full">
       <h1 className={`${abel.className} mb-8 text-xl md:text-2xl`}>
