@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import TagStatus from '@/app/ui/components/atoms/tag'
+import TagStatus from '@/app/ui/components/atoms/tag/tag'
 
 describe('TagStatus component', () => {
   it('renders with status true and displays text statusTag', () => {

@@ -1,7 +1,7 @@
 import { MOVIES_TABLE_HEADERS_TEXTS } from '@/app/lib/const/movies/table'
 import type { Movie } from '@/app/lib/models/movies'
 import { getImage, getMovies } from '@/app/lib/services/movies/movies'
-import TagStatus from '@/app/ui/components/atoms/tag'
+import TagStatus from '@/app/ui/components/atoms/tag/tag'
 import Pagination from '@/app/ui/components/organism/pagination/pagination'
 import { TableSkeleton } from '@/app/ui/components/organism/table/components/skeleton'
 import type { Column } from '@/app/ui/components/organism/table/table'
