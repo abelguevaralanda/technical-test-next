@@ -9,7 +9,7 @@
 
 > **Code**<br>  [![My Skills](https://skillicons.dev/icons?i=nextjs,ts,tailwind)](https://skillicons.dev)
 
-> **Quality**<br>  [![My Skills](https://skillicons.dev/icons?i=jest,cypress,tailwind)](https://skillicons.dev) ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)  ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white) 
+> **Quality**<br>  [![My Skills](https://skillicons.dev/icons?i=jest,cypress)](https://skillicons.dev) ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)  ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white) 
 
 > **CI/CD**<br>  [![My Skills](https://skillicons.dev/icons?i=vercel)](https://skillicons.dev) ![Sonar-Cloud](https://img.shields.io/badge/SonarCloud-F3702A.svg?style=for-the-badge&logo=SonarCloud&logoColor=white)  ![Git](https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=Git&logoColor=white)  ![Github-Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white) 
 
