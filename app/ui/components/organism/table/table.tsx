@@ -1,3 +1,4 @@
+import Search from '@/app/ui/components/organism/search/search'
 import type { ReactElement } from 'react'
 import React from 'react'
 import { abel } from '@/app/ui/fonts'
@@ -20,6 +21,7 @@ export default function Table<T extends { id: string | number }>({ columns, data
       <h1 className={`${abel.className} mb-8 text-xl md:text-2xl`}>
         {title}
       </h1>
+      <Search />
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
