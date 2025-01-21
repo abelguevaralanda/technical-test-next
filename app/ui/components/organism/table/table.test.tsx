@@ -14,6 +14,15 @@ const data: Data[] = [
   { id: 1, name: 'John Doe' },
   { id: 2, name: 'Jane Doe' },
 ]
+
+jest.mock('@/app/lib/hooks/use-search', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({
+    searchParams: new URLSearchParams(),
+    handleSearchParams: jest.fn(),
+  })),
+}))
+
 describe('Given a Table component', () => {
   describe('When the component receives the headers', () => {
     it('Should renders correctly', () => {

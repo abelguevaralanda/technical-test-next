@@ -8,7 +8,7 @@ interface TagStatusProps {
   statusSubtag?: string | ReactElement
 }
 
-export default function TagStatus({ status, statusTag, statusSubtag }: TagStatusProps) {
+export default function TagStatus({ status, statusTag, statusSubtag }: Readonly<TagStatusProps>) {
   return (
     <div
       className={clsx(

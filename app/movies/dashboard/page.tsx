@@ -1,5 +1,6 @@
 import { Card } from '@/app/ui/components/atoms/card/card'
 import { ChartsSkeleton } from '@/app/ui/components/organism/charts/components/charts-skeleton'
+import { abel } from '@/app/ui/fonts'
 import React, { Suspense } from 'react'
 import { trendingMoviesChart } from '@/app/lib/helpers/trending-movies-chart/trending-movies-chart'
 import { getTrendingMoviesToDashboard } from '@/app/lib/services/dashboard/dashboard'
@@ -15,6 +16,7 @@ export default async function DashboardPage() {
   return (
     <main>
       <section className="w-1/2">
+        <h1 className={`${abel.className} mb-8 text-xl md:text-2xl`}>Dashboard</h1>
         <Card title={DASHBOARD_CARD_TITLE_TEXT} subtitle={DASHBOARD_CARD_SUBTITLE_TEXT}>
           <Suspense fallback={<ChartsSkeleton />}>
             <Charts option={options} />

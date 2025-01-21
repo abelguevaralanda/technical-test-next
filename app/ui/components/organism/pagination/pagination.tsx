@@ -9,7 +9,7 @@ interface PaginationProps {
   totalPages: number
 }
 
-export default function Pagination({ currentPage, totalPages }: PaginationProps) {
+export default function Pagination({ currentPage, totalPages }: Readonly<PaginationProps>) {
   const router = useRouter()
   const isBackDisabled = currentPage === 1
   const isNextDisabled = currentPage === totalPages
@@ -27,7 +27,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
   }
 
   return (
-    <div className="flex justify-center items-center gap-4 py-4">
+    <section className="flex justify-center items-center gap-4 py-4">
       <Button onClick={handleBack} aria-disabled={isBackDisabled} className="btn h-8">
         Back
       </Button>
@@ -35,6 +35,6 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
       <Button onClick={handleNext} aria-disabled={isNextDisabled} className="btn h-8">
         Next
       </Button>
-    </div>
+    </section>
   )
 }
