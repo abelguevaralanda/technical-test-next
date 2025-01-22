@@ -11,6 +11,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Your movies App',
+  description: 'Application to show a list of movies',
 }
 
 export default function RootLayout({
