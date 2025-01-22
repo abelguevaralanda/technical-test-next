@@ -19,6 +19,7 @@ export default function SideNav() {
           className="mb-2 flex h-  items-end justify-start rounded-md shadow-2xl hover:opacity-80"
           width={300}
           height={50}
+          priority
         />
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
