@@ -20,7 +20,7 @@ const useSearch = (): UseSearch => {
 
     params.set('query', search)
     replace(`${pathname}?${params.toString()}`)
-  }, 300)
+  }, 1000)
 
   return {
     searchParams,
